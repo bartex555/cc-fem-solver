@@ -21,29 +21,35 @@ At first to test how the metod worked a known function was differentiated two ti
 ### Function:  
 $u = 3x^3 + 2x^2 - x$  
 
-![graph](github/test_accual.png)
+![graph](github/test_accual.png)  
 *screen taken from [desmos](https://www.desmos.com/calculator)*
 
-### Problem:  
-$\begin{cases}
+### Problem:
+
+```math
+\begin{cases}
     u'' = 18x + 4
     \\
     u(-1) = 0
     \\
     u'(1) = 12
-\end{cases}$
+\end{cases}
+```
 
-### Weak formula derivation: 
-$\begin{align}
+### Weak formula derivation:  
+
+```math
+\begin{align}
 u'' = 18x + 4 & \bigg| \cdot v(x) & v(-1) = 0 \\
 u''v = 18xv + 4v & \bigg| \int\limits_{-1}^1dx \\
 \int\limits_{-1}^1 u''v dx = \int\limits_{-1}^1 (18x + 4) v dx \\
 u'v\Big|_{-1}^{1} - \int\limits_{-1}^1 u'v' dx = \int\limits_{-1}^1 (18x + 4) v dx \\
 u'(1)v(1) - u'(-1)v(-1) - \int\limits_{-1}^1 u'v' dx = \int\limits_{-1}^1 (18x + 4) v dx \\
 -\int\limits_{-1}^1 u'v' dx = \int\limits_{-1}^1 (18x + 4) v dx - 12v(1)
-\end{align}$
+\end{align}
+```
 
-### Solution:
+### Solution:  
 The solution code is in the `solver.lua` file as `solver.solveTest(N)`  
 Using the `test N` command with a fairly large `N` gives the following output (also seen on a larger screen at the top of the page): 
 
@@ -56,7 +62,9 @@ The result matches the original function - the algorithm was *probably* implemen
 Now we can move on to the heat transfer problem.
 
 ### Problem:  
-$\begin{cases}
+
+```math
+\begin{cases}
     -\frac{d}{dx}(k(x)\frac{du(x)}{dx}) = 100x^2
     \\
     u(2) = -20
@@ -68,10 +76,13 @@ $\begin{cases}
         \\
         2x & x \in (1,2\rangle
     \end{cases}
-\end{cases}$
+\end{cases}
+```
 
 ### Weak formula derivation:  
-$\begin{align}
+
+```math
+\begin{align}
 -(ku')' = 100x^2 & \bigg| \cdot v(x) & v(2) = 0 \\
 -(ku')'v = 100x^2v  & \bigg| \int\limits_0^2dx \\
 -\int\limits_0^2 (ku')'v dx = \int\limits_0^2 100x^2 v dx \\
@@ -85,9 +96,8 @@ $\begin{align}
     \bar u = -20
 \end{cases} \\
 \int\limits_0^1 w'v' dx + \int\limits_1^2 2xw'v' dx - w(0)v(0) = \int\limits_0^2 100x^2 v dx - 40v(0)
-\end{align}$
-
-
+\end{align}
+```
 
 ### Solution
 The solution code is in the `solver.lua` file as `solver.solveHeat(N)`  
@@ -97,5 +107,5 @@ Using the `main N` command with a fairly large `N` gives the following output:
 
 Using the `fileExporter.lua` module the results can be exported to a `.csv` file and visualized using external software for better clarity:
 
-![external](github/proper_external.png)
+![external](github/proper_external.png)  
 *visualized in [LibreOffice](https://www.libreoffice.org)*
